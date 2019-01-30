@@ -106,4 +106,9 @@ def main(unused_argv):
 
 
 if __name__ == '__main__':
-  tf.app.run()
+    if (tf.test.is_gpu_available()):
+        print("Running on GPU")
+        tf.app.run()
+    else:
+        print("GPU not detected")
+     
