@@ -173,7 +173,7 @@ def draw_bounding_box_on_image(image,
   draw.line([(left, top), (left, bottom), (right, bottom),
              (right, top), (left, top)], width=thickness, fill=color)
   try:
-    font = ImageFont.truetype('arial.ttf', 24)
+    font = ImageFont.truetype('arial.ttf', 90)
   except IOError:
     font = ImageFont.load_default()
 
@@ -550,8 +550,8 @@ def visualize_boxes_and_labels_on_image_array(
     instance_boundaries=None,
     keypoints=None,
     use_normalized_coordinates=False,
-    max_boxes_to_draw=20,
-    min_score_thresh=.5,
+    max_boxes_to_draw=3,
+    min_score_thresh=.7,
     agnostic_mode=False,
     line_thickness=4,
     groundtruth_box_visualization_color='black',
@@ -624,7 +624,9 @@ def visualize_boxes_and_labels_on_image_array(
             if classes[i] in category_index.keys():
               class_name = category_index[classes[i]]['name']
             else:
+              continue
               class_name = 'N/A'
+              
             display_str = str(class_name)
         if not skip_scores:
           if not display_str:
@@ -868,9 +870,9 @@ class VisualizeSingleFrameDetections(EvalMetricOpsVisualization):
 
   def __init__(self,
                category_index,
-               max_examples_to_draw=5,
-               max_boxes_to_draw=20,
-               min_score_thresh=0.2,
+               max_examples_to_draw=3,
+               max_boxes_to_draw=3,
+               min_score_thresh=0.7,
                use_normalized_coordinates=True,
                summary_name_prefix='Detections_Left_Groundtruth_Right'):
     super(VisualizeSingleFrameDetections, self).__init__(
