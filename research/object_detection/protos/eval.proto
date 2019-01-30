@@ -6,7 +6,7 @@ package object_detection.protos;
 message EvalConfig {
   optional uint32 batch_size = 25 [default=1];
   // Number of visualization images to generate.
-  optional uint32 num_visualizations = 1 [default=10];
+  optional uint32 num_visualizations = 1 [default=50];
 
   // Number of examples to process of evaluation.
   optional uint32 num_examples = 2 [default=5000, deprecated=true];
